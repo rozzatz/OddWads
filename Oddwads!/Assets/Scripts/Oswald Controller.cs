@@ -12,6 +12,7 @@ public class OswaldController : MonoBehaviour
     bool RightKeyPressed = false;
     bool IsOnGround = true;
     public Rigidbody2D Rb;
+    public float health = 5;
 
     // change all key codes into the thing that universal for unity  i foget what its called.
     void Start()
@@ -62,6 +63,12 @@ public class OswaldController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsOnGround = true;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health -= 1f;
+            Debug.Log("healt is " + health);
         }
     }
 }
