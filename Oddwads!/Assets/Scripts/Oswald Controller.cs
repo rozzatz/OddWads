@@ -74,11 +74,15 @@ public class OswaldController : MonoBehaviour
         }
         if (health <1)
         {
-            Rb.AddForce(Vector3.up * 200, ForceMode2D.Impulse);
-            Rb.AddForce(Vector3.left * 200, ForceMode2D.Impulse);
-            Debug.Log("game over");
+           
             GameOver = true;
             
+        }
+
+        if (GameOver == true) 
+        { Debug.Log("game over");
+            Rb.AddForce(Vector3.up * 200, ForceMode2D.Impulse);
+            Rb.AddForce(Vector3.left * 200, ForceMode2D.Impulse);
         }
     }
 
@@ -95,6 +99,11 @@ public class OswaldController : MonoBehaviour
             health -= 1f;
             Debug.Log("healt is " + health);
            Invincible = true;
+        }
+
+        if (collision.gameObject.CompareTag("Death") )
+        {
+            GameOver = true;
         }
     }
 }
