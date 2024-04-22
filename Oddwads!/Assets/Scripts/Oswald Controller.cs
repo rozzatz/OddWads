@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class OswaldController : MonoBehaviour
@@ -13,6 +14,10 @@ public class OswaldController : MonoBehaviour
     bool IsOnGround = true;
     public Rigidbody2D Rb;
     public float health = 5;
+    bool Invincible = false;
+    float invinvibleTimer = 2f;
+    public bool GameOver = false;
+    
 
     // change all key codes into the thing that universal for unity  i foget what its called.
     void Start()
@@ -56,7 +61,27 @@ public class OswaldController : MonoBehaviour
 
         if (RightKeyPressed == true)
         { Rb.AddForce(Vector3.right * WalkSpeed , ForceMode2D.Force); }
+
+        if (Invincible == true)
+        {
+            invinvibleTimer -= Time.deltaTime;
+            if (invinvibleTimer < 0)
+            {
+                Invincible = false;
+                invinvibleTimer = 2;
+
+            }
+        }
+        if (health <1)
+        {
+            Rb.AddForce(Vector3.up * 200, ForceMode2D.Impulse);
+            Rb.AddForce(Vector3.left * 200, ForceMode2D.Impulse);
+            Debug.Log("game over");
+            GameOver = true;
+            Thread.Sleep(999999);
+        }
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -65,10 +90,11 @@ public class OswaldController : MonoBehaviour
             IsOnGround = true;
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && Invincible == false)
         {
             health -= 1f;
             Debug.Log("healt is " + health);
+           Invincible = true;
         }
     }
 }
