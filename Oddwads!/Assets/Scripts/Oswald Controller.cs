@@ -78,7 +78,7 @@ public class OswaldController : MonoBehaviour
             Rb.AddForce(Vector3.left * 200, ForceMode2D.Impulse);
             Debug.Log("game over");
             GameOver = true;
-            Thread.Sleep(999999);
+            
         }
     }
 
