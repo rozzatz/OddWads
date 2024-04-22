@@ -32,5 +32,11 @@ public class BasicEnemyController : MonoBehaviour
           if (directionleft == true ) { directionleft = false; }
           else if (directionleft == false ) {  directionleft = true; }
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Rb.AddForce(Vector3.up * 2, ForceMode2D.Impulse);
+            if (directionleft == true) { directionleft = false; }
+            else if (directionleft == false) { directionleft = true; }
+        }
     }
 }
