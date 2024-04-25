@@ -10,6 +10,7 @@ public class BasicEnemyController : MonoBehaviour
     void Start()
     {
         Rb = GetComponent<Rigidbody2D>();
+        Speed = Speed * 1000;
     }
 
     // Update is called once per frame
@@ -17,11 +18,11 @@ public class BasicEnemyController : MonoBehaviour
     {
         if (directionleft == true)
         {
-            Rb.AddForce(Vector3.left * Speed , ForceMode2D.Force);
+            Rb.AddForce(Vector3.left * Time.deltaTime * Speed , ForceMode2D.Force);
         }
         if (directionleft == false) 
         {
-            Rb.AddForce(Vector3.right * Speed , ForceMode2D.Force);
+            Rb.AddForce(Vector3.right * Time.deltaTime * Speed , ForceMode2D.Force);
         }
     }
 

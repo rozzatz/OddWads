@@ -24,6 +24,7 @@ public class OswaldController : MonoBehaviour
     {
         // lets me use my rigigf body in the script
         Rb = GetComponent<Rigidbody2D>();
+        WalkSpeed = WalkSpeed * 1000;
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class OswaldController : MonoBehaviour
         //if you press spacebar you can jump
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround == true)
         {
-            Rb.AddForce(Vector3.up * JumpForce , ForceMode2D.Impulse);
+            Rb.AddForce(Vector3.up  * JumpForce , ForceMode2D.Impulse);
             IsOnGround = false;
         }
         // detecting wether the left key is pressed so i can add continuious movement
@@ -56,11 +57,11 @@ public class OswaldController : MonoBehaviour
         //movement scripts
         if (LeftKeyPressed == true)
         {
-            Rb.AddForce(Vector3.left * WalkSpeed  , ForceMode2D.Force);
+            Rb.AddForce(Vector3.left * Time.deltaTime * WalkSpeed , ForceMode2D.Force);
         }
 
         if (RightKeyPressed == true)
-        { Rb.AddForce(Vector3.right * WalkSpeed , ForceMode2D.Force); }
+        { Rb.AddForce(Vector3.right * Time.deltaTime * WalkSpeed , ForceMode2D.Force); }
 
         if (Invincible == true)
         {

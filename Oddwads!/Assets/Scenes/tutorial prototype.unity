@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618178713364439615, guid: 88a5832306874b849bd5f58e20c9545f, type: 3}
       propertyPath: WalkSpeed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8208920174815443501, guid: 88a5832306874b849bd5f58e20c9545f, type: 3}
       propertyPath: m_LocalScale.x
