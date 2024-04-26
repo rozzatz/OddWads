@@ -8,8 +8,6 @@ public class OswaldController : MonoBehaviour
     public float JumpForce = 10f;
     bool somersault = false;
     bool somersaultKick = false;
-    bool LeftKeyPressed = false;
-    bool RightKeyPressed = false;
     bool IsOnGround = true;
     public Rigidbody Rb;
     public float health = 5;
@@ -37,32 +35,18 @@ public class OswaldController : MonoBehaviour
             Rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
-        // detecting wether the left key is pressed so i can add continuious movement
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            LeftKeyPressed = true;
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            LeftKeyPressed = false;
-        }
-        //same thing for right key
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            RightKeyPressed = true;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            RightKeyPressed = false;
-        }
-        //movement scripts
-        if (LeftKeyPressed == true)
+       //movement code
+        if (Input.GetKey(KeyCode.A))
         {
             Rb.AddForce(Vector3.left * Time.deltaTime * WalkSpeed, ForceMode.Force);
         }
-
-        if (RightKeyPressed == true)
-        { Rb.AddForce(Vector3.right * Time.deltaTime * WalkSpeed, ForceMode.Force); }
+       
+        if (Input.GetKey(KeyCode.D))
+        {
+            Rb.AddForce(Vector3.right * Time.deltaTime * WalkSpeed, ForceMode.Force);
+        }
+    
+       
 
         if (Invincible == true)
         {
