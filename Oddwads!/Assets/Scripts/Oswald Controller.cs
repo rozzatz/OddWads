@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OswaldController : MonoBehaviour
 {
@@ -64,8 +65,9 @@ public class OswaldController : MonoBehaviour
 
         if (GameOver == true) 
         { Debug.Log("game over");
-            Rb.AddForce(Vector3.up * 200, ForceMode2D.Impulse);
-            Rb.AddForce(Vector3.left * 200, ForceMode2D.Impulse);
+            //Destroy(gameObject);
+            //transform.position = new Vector3(-30, 1, 0);
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -79,7 +81,7 @@ public class OswaldController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy") && Invincible == false)
         {
-            health -= 1f;
+            health -= 6f;
             Debug.Log("healt is " + health);
            Invincible = true;
         }
