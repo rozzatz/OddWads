@@ -67,7 +67,7 @@ public class OswaldController : MonoBehaviour
         { Debug.Log("game over");
             //Destroy(gameObject);
             //transform.position = new Vector3(-30, 1, 0);
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
     }
 
